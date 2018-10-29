@@ -35,11 +35,11 @@ def ngrams(corpus, order):
     """
     if order < 0:
         raise ValueError('Order must be integer > 0')
-    left_pad = ['<S_{}>'.format(i) for i in xrange(order - 1)]
-    right_pad = ['</S_{}>'.format(i) for i in xrange(order - 2, -1, -1)]
+    left_pad = ['<S_{}>'.format(i) for i in range(order - 1)]
+    right_pad = ['</S_{}>'.format(i) for i in range(order - 2, -1, -1)]
     for sentence in corpus:
         padded_sentence = left_pad + sentence + right_pad
-        for i in xrange(len(padded_sentence) - order + 1):
+        for i in range(len(padded_sentence) - order + 1):
             prefix = tuple(padded_sentence[i:i + order - 1])
             yield (prefix, padded_sentence[i + order - 1])
 
